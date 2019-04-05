@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Get current working directory
+BASEDIR=$(dirname "$0")
+
+if [ "$BASEDIR" == "." ]; then
+   BASEDIR=$(pwd)
+fi
+
+# Start service
+php "$BASEDIR/../service.php"

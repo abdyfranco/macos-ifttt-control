@@ -28,6 +28,7 @@ mv "$BASEDIR/master" "$BASEDIR/master.zip" >/dev/null 2>&1
 unzip "$BASEDIR/master.zip" >/dev/null 2>&1
 rm -rf "$BASEDIR/master.zip" >/dev/null 2>&1
 mv "$BASEDIR/m-cli-master" "$BASEDIR/vendors/m-cli-master" >/dev/null 2>&1
+cp $BASEDIR/plugins/* "$BASEDIR/vendors/m-cli-master/plugins" >/dev/null 2>&1
 
 # Check if M-CLI has been downloaded succesfully
 if [ ! -d "$BASEDIR/vendors/m-cli-master" ] 

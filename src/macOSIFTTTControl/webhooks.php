@@ -7,6 +7,6 @@ $webhooks = [
      * value: Webhook url to trigger.
      *
      * Example:
-     * 'sleep' => 'https://webhook.website.com/12345/sleep?argument1=true'
+     * 'sleep' => 'https://webhook.website.com/12345/sleep'
      */
 ];

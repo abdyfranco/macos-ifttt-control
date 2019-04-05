@@ -25,7 +25,7 @@ while (true) {
     }
 
     // Get last command
-    $last_command = trim(file_get_contents(ROOTWEBDIR . 'last_command.ifttt'));
+    $last_command = trim(file_get_contents(ROOTWEBDIR . 'last_command'));
 
     // Execute commands
     $exex_command = end($commands);
@@ -35,7 +35,10 @@ while (true) {
         $cli_command = (array) explode('|', trim($exex_command), 2);
         $shell_command = ROOTWEBDIR . 'vendors' . DS . 'm-cli-master' . DS . 'm ' . trim($cli_command[1]);
 
-        echo 'Executing: ' . $shell_command . "\n";
+        // Save last command
+        file_put_contents(ROOTWEBDIR . 'last_command', $exec_hash);
+
+        echo 'Executing: ' . $shell_command . ' - Hash: ' . $exec_hash . "\n";
         $response = shell_exec($shell_command);
 
         // Trigger Webhook if exists
@@ -51,9 +54,6 @@ while (true) {
 
             @file_get_contents($webhooks[$action] . (strpos($webhooks[$action], '?') !== false ? '&' . http_build_query($parameters) : '?' . http_build_query($parameters)));
         }
-
-        // Save last command
-        file_put_contents(ROOTWEBDIR . 'last_command.ifttt', $exec_hash);
     }
 
     // Garbage collector

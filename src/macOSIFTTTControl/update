@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set terminal color
+printf "\033[1;36;48m" ; clear
+
 # Get current working directory
 BASEDIR=$(dirname "$0")
 

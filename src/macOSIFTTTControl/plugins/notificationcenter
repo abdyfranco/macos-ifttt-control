@@ -15,13 +15,12 @@ notification(){
 	osascript -e "display notification \"${2}\" with title \"${1}\""
 }
 
-
 case $1 in
     help)
         help
         ;;
     *)
-        notification $@ $@
+        notification "$@" "$@"
         ;;
 esac
 

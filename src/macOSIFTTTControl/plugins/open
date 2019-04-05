@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+help(){
+    cat<<__EOF__
+    usage:  m open [ file | application | url ]
+
+    Examples:
+      m open "http://google.com"                   # opens a website
+      m open /Volumes/Archive/Documents/file.txt   # opens a file
+      m open /Applications/Messages.app            # opens an application
+__EOF__
+}
+
+case $1 in
+    help)
+        help
+        ;;
+    *)
+        open $@
+        ;;
+esac
+
+# vim: ts=4 sw=4 softtabstop=4 expandtab

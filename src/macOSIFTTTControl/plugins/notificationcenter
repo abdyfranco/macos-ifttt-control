@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+help(){
+    cat<<__EOF__
+    usage:  m notificationcenter [ title | message ]
+
+    Examples:
+      m notificationcenter "hello" "world"       # shows a notification on the notification center
+__EOF__
+}
+
+
+notification(){
+    echo "Sending notification..."
+	osascript -e "display notification \"${2}\" with title \"${1}\""
+}
+
+
+case $1 in
+    help)
+        help
+        ;;
+    *)
+        notification $@ $@
+        ;;
+esac
+
+# vim: ts=4 sw=4 softtabstop=4 expandtab

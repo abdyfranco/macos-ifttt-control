@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+help(){
+    cat<<__EOF__
+    usage:  m download [ url ]
+
+    Examples:
+      m open "http://google.com/file.zip"    # downloads a file
+__EOF__
+}
+
+download(){
+    echo "Downloading File..."
+    cd ~/Downloads
+    curl -O "${1}" >/dev/null 2>&1
+}
+
+case $1 in
+    help)
+        help
+        ;;
+    *)
+        download "$@"
+        ;;
+esac
+
+# vim: ts=4 sw=4 softtabstop=4 expandtab

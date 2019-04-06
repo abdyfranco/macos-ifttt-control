@@ -38,7 +38,12 @@ while (true) {
         // Save last command
         file_put_contents(ROOTWEBDIR . 'last_command', $exec_hash);
 
-        echo 'Executing: ' . $shell_command . ' - Hash: ' . $exec_hash . "\n";
+        // Log execution
+        $log = 'Executing: ' . $shell_command . ' - Hash: ' . $exec_hash . ' - Last Hash: ' . $last_command . "\n";
+        file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
+        echo $log;
+
+        // Execute command
         $response = shell_exec($shell_command);
 
         // Trigger Webhook if exists
@@ -67,6 +72,7 @@ while (true) {
     unset($shell_command);
     unset($arguments);
     unset($action);
+    unset($log);
     unset($response);
     unset($last_command);
     unset($webhooks);

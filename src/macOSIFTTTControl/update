@@ -47,7 +47,6 @@ fi
 # Replace old files with the new ones
 rm -rf "$BASEDIR/vendors/m-cli-master" >/dev/null 2>&1
 mv "$BASEDIR/m-cli-master" "$BASEDIR/vendors/m-cli-master" >/dev/null 2>&1
-cp $BASEDIR/plugins/* "$BASEDIR/vendors/m-cli-master/plugins" >/dev/null 2>&1
 
 # Download main service
 clear;
@@ -61,3 +60,4 @@ echo "o------------------------------------------------------------------o";
 
 cd $BASEDIR
 curl -O https://raw.githubusercontent.com/abdyfranco/macos-ifttt-control/master/src/macOSIFTTTControl/service.php >/dev/null 2>&1
+cp $BASEDIR/plugins/* "$BASEDIR/vendors/m-cli-master/plugins" >/dev/null 2>&1

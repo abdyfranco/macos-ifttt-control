@@ -1,17 +1,15 @@
 <?php
 
+// Include required files
 include 'config.php';
+include 'blacklist.php';
 
+// Define constants
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOTWEBDIR', dirname(__FILE__) . DS);
 
 // Format DropBox url
 $config['public_link'] = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config['public_link']));
-
-// Hashes blacklist
-$blacklist = [
-    'd41d8cd98f00b204e9800998ecf8427e'
-];
 
 while (true) {
     // Get webhook events

@@ -8,6 +8,11 @@ define('ROOTWEBDIR', dirname(__FILE__) . DS);
 // Format DropBox url
 $config['public_link'] = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config['public_link']));
 
+// Hashes blacklist
+$blacklist = [
+    'd41d8cd98f00b204e9800998ecf8427e'
+];
+
 while (true) {
     // Get webhook events
     include 'webhooks.php';
@@ -31,7 +36,7 @@ while (true) {
     $exex_command = end($commands);
     $exec_hash = key($commands);
 
-    if ($last_command !== $exec_hash) {
+    if ($last_command !== $exec_hash && !in_array($exec_hash, $blacklist)) {
         $cli_command = (array) explode('|', trim($exex_command), 2);
         $shell_command = ROOTWEBDIR . 'vendors' . DS . 'm-cli-master' . DS . 'm ' . trim($cli_command[1]);
 

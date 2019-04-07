@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>macOS IFTTT Control</title>
+
+        <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
+
+        <link href="./assets/css/helpers.css" rel="stylesheet">
+        <link href="./assets/css/animate.css" rel="stylesheet">
+        <link href="./assets/css/theme.css" rel="stylesheet">
+        <link href="./assets/css/styles.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="p-4">
+            <div id="webhooks">
+                <h6 class="pb-2 text-muted"><small>Trigger a Webhook-based Applet:</small></h6>
+                <div class="row px-3">
+                    <!-- Webhooks will be listed here -->
+
+                    <div id="webhooks-empty" class="w-100 p-2" style="display: none;">
+                        <div class="bg-info text-white shadow rounded px-4 py-3">
+                            There are no Webhooks added yet. Why don't you add one right now?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events" class="pt-4">
+                <h6 class="pb-2 text-muted"><small>Manage Webhook Events:</small></h6>
+                <div class="row px-3">
+                    <!-- Events will be listed here -->
+
+                    <div id="events-empty" class="w-100 p-2" style="display: none;">
+                        <div class="bg-info text-white shadow rounded px-4 py-3">
+                            There are no Events added yet. Why don't you add one right now?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="options" class="pt-4">
+                <h6 class="pb-2 text-muted"><small>Options:</small></h6>
+                <div class="row">
+                    <div class="col-12 col-md-4 text-left">
+                        <button type="button" class="btn btn-sm btn-info btn-block" data-toggle="modal" data-target="#add-webhook"><i class="fas fa-plus"></i> Add Webhook Trigger</button>
+                    </div>
+                    <div class="modal fade" id="add-webhook" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-info"></i> Add Webhook</h5>
+                                    <button type="button" class="close mt-n4" data-dismiss="modal" aria-label="Close">
+                                        <i class="fas fa-times fs-md"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="webhook_url">Webhook URL</label>
+                                        <input type="text" class="form-control" id="webhook_url" placeholder="https://maker.ifttt.com/trigger/event/">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook_icon">Webhook Icon</label>
+                                        <div id="webhook_icons" class="p-1">
+                                            <!-- Font Awesome icons will be listed here -->
+                                        </div>
+                                        <input type="hidden" id="webhook_icon" value="fas fa-rocket">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook_color">Webhook Color</label>
+                                        <select class="form-control" id="webhook_color">
+                                            <option value="info">Cyan</option>
+                                            <option value="primary">Blue</option>
+                                            <option value="success">Green</option>
+                                            <option value="warning">Yellow</option>
+                                            <option value="danger">Red</option>
+                                            <option value="dark">Gray</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook_title">Webhook Title</label>
+                                        <input type="text" class="form-control" id="webhook_title" placeholder="Trigger Webhook">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"> <i class="fas fa-times"></i> Close</button>
+                                    <button id="submit_add_webhook" type="button" class="btn btn-sm btn-info"><i class="fas fa-check"></i> Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 text-center">
+                        <button type="button" class="btn btn-sm btn-info btn-block" data-toggle="modal" data-target="#add-event"><i class="fas fa-plus"></i> Add Webhook Event</button>
+                    </div>
+                    <div class="modal fade" id="add-event" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-info"></i> Add Event</h5>
+                                    <button type="button" class="close mt-n4" data-dismiss="modal" aria-label="Close">
+                                        <i class="fas fa-times fs-md"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="event_url">Event URL</label>
+                                        <input type="text" class="form-control" id="event_url" placeholder="https://maker.ifttt.com/trigger/event/">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="event_command">Event Command</label>
+                                        <select class="form-control" id="event_command">
+                                            <option value="battery">battery</option>
+                                            <option value="bluetooth">bluetooth</option>
+                                            <option value="dir">dir</option>
+                                            <option value="disk">disk</option>
+                                            <option value="display">display</option>
+                                            <option value="dns">dns</option>
+                                            <option value="dock">dock</option>
+                                            <option value="finder">finder</option>
+                                            <option value="firewall">firewall</option>
+                                            <option value="flightmode">flightmode</option>
+                                            <option value="gatekeeper">gatekeeper</option>
+                                            <option value="hostname">hostname</option>
+                                            <option value="info">info</option>
+                                            <option value="itunes">itunes</option>
+                                            <option value="lock">lock</option>
+                                            <option value="ntp">ntp</option>
+                                            <option value="printer">printer</option>
+                                            <option value="network">network</option>
+                                            <option value="nosleep">nosleep</option>
+                                            <option value="notification">notification</option>
+                                            <option value="restart">restart</option>
+                                            <option value="safeboot">safeboot</option>
+                                            <option value="screensaver">screensaver</option>
+                                            <option value="service">service</option>
+                                            <option value="shutdown">shutdown</option>
+                                            <option value="sleep">sleep</option>
+                                            <option value="timezone">timezone</option>
+                                            <option value="touchbar">touchbar</option>
+                                            <option value="trash">trash</option>
+                                            <option value="update">update</option>
+                                            <option value="user">user</option>
+                                            <option value="volume">volume</option>
+                                            <option value="vpn">vpn</option>
+                                            <option value="wallpaper">wallpaper</option>
+                                            <option value="wifi">wifi</option>
+                                            <option value="download">download</option>
+                                            <option value="notificationcenter">notificationcenter</option>
+                                            <option value="open">open</option>
+                                            <option value="say">say</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"> <i class="fas fa-times"></i> Close</button>
+                                    <button id="submit_add_event" type="button" class="btn btn-sm btn-info"><i class="fas fa-check"></i> Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 text-right">
+                        <a href="http://abdyfran.co/projects/macos-ifttt/marketplace" target="_blank" class="btn btn-sm btn-info btn-block external-link"><i class="fas fa-rocket"></i> Marketplace</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="alert-dialog" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body text-center py-5">
+                            <div class="pb-4">
+                                <h1 id="alert-dialog-icon" class="pb-2 text-center"><i class="fas fa-times-circle"></i></h1>
+                                <h4 id="alert-dialog-title"></h4>
+                                <h6 id="alert-dialog-content" class="text-dark pt-2"></h6>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fas fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // You can also require other files to run in this process
+            require('./renderer.js')
+            require('./webhooks.js')
+
+            // Redirect to the installer if the service isn't configured
+            const fs = require('fs');
+            const path = require('path');
+            const service = path.join(__dirname, config_file);
+
+            try {
+                if (!fs.existsSync(service)) {
+                    window.location.replace('install.html');
+                }
+            } catch(err) {
+                console.error(err);
+            }
+        </script>
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>macOS IFTTT Control Installer</title>
+
+        <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
+
+        <link href="./assets/css/helpers.css" rel="stylesheet">
+        <link href="./assets/css/animate.css" rel="stylesheet">
+        <link href="./assets/css/theme.css" rel="stylesheet">
+        <link href="./assets/css/styles.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="py-5 px-2 text-center">
+            <h2>Install macOS IFTTT Control</h2>
+            <p class="pt-4 px-5">
+                Before you can start using macOS IFTTT Control, you need to install the system service. You can run the installer by pressing the button below, or you can install it manually. If you want to install the manual, check our online documentation for more information.
+            </p>
+            <div class="display-1 text-info py-5">
+                <i class="fas fa-download"></i>
+            </div>
+            <div class="py-3">
+                <button type="button" class="btn btn-info install">Install macOS IFTTT Control</button>
+            </div>
+        </div>
+
+        <script>
+            // You can also require other files to run in this process
+            require('./renderer.js')
+            require('./install.js')
+        </script>
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>

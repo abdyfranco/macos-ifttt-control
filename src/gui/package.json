@@ -1,0 +1,30 @@
+{
+  "name": "macos-ifttt",
+  "version": "1.0.0",
+  "description": "Cloud-Based IFTTT Task Automation Service for macOS.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "electron": "^4.1.3",
+    "electron-packager": "^13.1.1",
+    "electron-debug": "^2.1.0"
+  },
+  "repository": "https://github.com/abdyfranco/macos-ifttt-control",
+  "keywords": [
+    "macos",
+    "webhook",
+    "ifttt",
+    "automation"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.1.3",
+    "electron-packager": "^13.1.1"
+  }
+}

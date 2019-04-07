@@ -7,13 +7,20 @@ include 'blacklist.php';
 // Define constants
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOTWEBDIR', dirname(__FILE__) . DS);
+define('APPDIR', ROOTWEBDIR . 'macOS IFTTT Control.app' . DS . 'Contents' . DS . 'Resources' . DS . 'app' . DS);
 
 // Format DropBox url
 $config['public_link'] = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config['public_link']));
 
 while (true) {
     // Get webhook events
-    include 'webhooks.php';
+    $webhooks = @file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'events.json');
+    $webhooks = json_decode($webhooks);
+
+    foreach ($webhooks as $key => $value) {
+        $webhooks[$value->command][] = $value;
+        unset($webhooks[$key]);
+    }
 
     // Get commands history
     $command_history = file_get_contents($config['public_link']);
@@ -53,18 +60,22 @@ while (true) {
         $arguments = (array) explode(' ', $cli_command[1]);
         $action = trim($arguments[0]);
 
-        if (isset($webhooks[$action]) && strpos($webhooks[$action], 'http') !== false) {
-            $parameters = [
-                'value1' => $action, // Executed action
-                'value2' => implode(' ', $arguments), // Arguments
-                'value3' => $response // Command response
-            ];
+        if (isset($webhooks[$action]) && count($webhooks[$action]) > 0) {
+            foreach ($webhooks[$action] as $webhook) {
+                $parameters = [
+                    'value1' => $action, // Executed action
+                    'value2' => implode(' ', $arguments), // Arguments
+                    'value3' => $response // Command response
+                ];
 
-            @file_get_contents($webhooks[$action] . (strpos($webhooks[$action], '?') !== false ? '&' . http_build_query($parameters) : '?' . http_build_query($parameters)));
+                @file_get_contents($webhook->url . (strpos($webhook->url, '?') !== false ? '&' . http_build_query($parameters) : '?' . http_build_query($parameters)));
+            }
         }
     }
 
     // Garbage collector
+    unset($key);
+    unset($value);
     unset($command_history);
     unset($commands);
     unset($command);
@@ -78,6 +89,7 @@ while (true) {
     unset($log);
     unset($response);
     unset($last_command);
+    unset($webhook);
     unset($webhooks);
     sleep(5);
 }

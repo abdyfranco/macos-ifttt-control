@@ -10,7 +10,7 @@
     <true/>
     <key>ProgramArguments</key>
     <array>
-            <string>/Applications/macOSIFTTTControl/daemon/macosiftttcontrol</string>
+            <string>/Applications/macOSIFTTTControl.app/Contents/Resources/app/cli/daemon/macosiftttcontrol</string>
     </array>
 </dict>
 </plist>

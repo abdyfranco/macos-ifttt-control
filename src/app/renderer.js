@@ -2,10 +2,6 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 
-// Define constants
-window.config_file = '../../../../config.php';
-window.install_file = '../../../../install';
-
 // Load jQuery and Bootstrap
 window.$ = window.jQuery = require('jquery');
 window.Bootstrap = require('bootstrap');

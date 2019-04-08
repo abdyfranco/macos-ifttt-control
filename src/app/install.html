@@ -13,13 +13,20 @@
         <link href="./assets/css/styles.css" rel="stylesheet">
     </head>
     <body class="bg-light">
-        <div class="py-5 px-2 text-center">
+        <div class="py-5 px-5 text-center">
             <h2>Install macOS IFTTT Control</h2>
             <p class="pt-4 px-5">
-                Before you can start using macOS IFTTT Control, you need to install the system service. You can run the installer by pressing the button below, or you can install it manually. If you want to install the manual, check our online documentation for more information.
+                Before you can start using macOS IFTTT Control, you need to configure your Dropbox account first. <br/>
+                A file named "<i id="mac_hash"></i>" has been placed on your Desktop, Now please create a folder called "macOSIFTTTControl" in the root of your Dropbox account and then upload the file into it.
             </p>
-            <div class="display-1 text-info py-5">
+            <div class="display-1 text-info py-3">
                 <i class="fas fa-download"></i>
+            </div>
+            <div class="px-5 py-4 text-left">
+                <div class="form-group">
+                    <label for="dropbox_url"><i class="fab fa-dropbox text-info mr-1"></i> <strong>Dropbox Public Link</strong></label>
+                    <input type="text" class="form-control shadow-sm border border-info text-secondary" id="dropbox_url" placeholder="Dropbox Public Link">
+                </div>
             </div>
             <div class="py-3">
                 <button type="button" class="btn btn-info install">Install macOS IFTTT Control</button>

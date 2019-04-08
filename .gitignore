@@ -1,0 +1,4 @@
+# .gitignore
+src/app/node_modules/
+src/app/cli/vendors/
+build/

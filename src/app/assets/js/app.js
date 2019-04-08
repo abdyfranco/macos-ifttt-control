@@ -27,3 +27,30 @@ function alertDialog(title, text, type) {
 
     $('#alert-dialog').modal('show');
 }
+
+/**
+ * Copy the text of an element to the clipboard
+ */
+function copyToClipboard(element) {
+    var $temp = $('<input>');
+
+    $('body').append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand('copy');
+
+    $temp.remove();
+}
+
+/**
+ * Validates a given URL
+ */
+function validateUrl(url) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+
+    return !!pattern.test(url);
+}

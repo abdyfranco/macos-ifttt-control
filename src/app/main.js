@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const Menu = require('electron').Menu
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,12 +10,14 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 950,
+    height: 700,
+    minHeight: 480,
+    minWidth: 700,
     webPreferences: {
       nodeIntegration: true
     },
-    icon: path.join(__dirname, 'assets/icon.png')
+    icon: path.join(__dirname, '/assets/icon.png')
   })
 
   // and load the index.html of the app.
@@ -30,6 +33,8 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  createMenu()
 }
 
 // This method will be called when Electron has finished
@@ -39,9 +44,7 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 })
 
 app.on('activate', function () {
@@ -53,3 +56,71 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 //require('electron-debug')({showDevTools: true, enabled: true});
+
+function createMenu() {
+  const application = {
+    label: "Application",
+    submenu: [
+      {
+        label: "About macOS IFTTT Control",
+        selector: "orderFrontStandardAboutPanel:"
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Quit",
+        accelerator: "Command+Q",
+        click: () => {
+          app.quit()
+        }
+      }
+    ]
+  }
+
+  const edit = {
+    label: "Edit",
+    submenu: [
+      {
+        label: "Undo",
+        accelerator: "CmdOrCtrl+Z",
+        selector: "undo:"
+      },
+      {
+        label: "Redo",
+        accelerator: "Shift+CmdOrCtrl+Z",
+        selector: "redo:"
+      },
+      {
+        type: "separator"
+      },
+      {
+        label: "Cut",
+        accelerator: "CmdOrCtrl+X",
+        selector: "cut:"
+      },
+      {
+        label: "Copy",
+        accelerator: "CmdOrCtrl+C",
+        selector: "copy:"
+      },
+      {
+        label: "Paste",
+        accelerator: "CmdOrCtrl+V",
+        selector: "paste:"
+      },
+      {
+        label: "Select All",
+        accelerator: "CmdOrCtrl+A",
+        selector: "selectAll:"
+      }
+    ]
+  }
+
+  const template = [
+    application,
+    edit
+  ]
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template))
+}

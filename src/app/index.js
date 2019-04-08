@@ -5,6 +5,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const remote = require('electron').remote;
+const request = require("request");
+
+// Get config
+var config_file = path.join(__dirname, './assets/json/config.json');
+let config_rawdata = fs.readFileSync(config_file);  
+let config = JSON.parse(config_rawdata);  
+window.config = config;
 
 // Get icons
 var icons_file = path.join(__dirname, '/assets/json/icons.json');
@@ -23,17 +31,6 @@ var events_file = path.join(__dirname, './assets/json/events.json');
 let events_rawdata = fs.readFileSync(events_file);  
 let events = JSON.parse(events_rawdata);  
 window.events = events;
-
-function validateUrl(url) {
-    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-
-    return !!pattern.test(url);
-}
 
 function runWebhook(url)
 {
@@ -75,7 +72,7 @@ function addWebhook()
     }
 
     if (!validateUrl(url)) {
-        alert('The entered Webhook URL it\'s invalid');
+        alert('The entered Webhook URL it\'s invalid.');
         return;
     }
 
@@ -109,7 +106,7 @@ function addEvent()
     }
 
     if (!validateUrl(url)) {
-        alert('The entered Event URL it\'s invalid');
+        alert('The entered Event URL it\'s invalid.');
         return;
     }
 
@@ -141,6 +138,36 @@ function deleteEvent(id)
  */
 (function (){
     /*!
+     * Check for updates
+     */
+    jQuery(document).ready(function () {
+        // Get current version
+        var version = remote.app.getVersion();
+
+        // Get remote version
+        var package_url = 'https://raw.githubusercontent.com/abdyfranco/macos-ifttt-control/master/src/app/package.json';
+
+        request({
+            url: package_url,
+            json: true
+        }, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                if (version !== body.version) {
+                    window.location.replace('update.html');
+                }
+            }
+        });
+
+    });
+
+    /*!
+     * Set Mac Hash
+     */
+    jQuery(document).ready(function () {
+        $('#footer #mac_hash').text(config.hash);
+    });
+
+    /*!
      * List Font Awesome 5 Icons
      */
     jQuery(document).ready(function () {
@@ -154,7 +181,7 @@ function deleteEvent(id)
                     element[2] = element[0];
                 }
 
-                $('#webhook_icons').append('<div class="btn btn-sm btn-info w-px-30 m-1" onclick="$(\'#webhook_icon\').val(\'' + element[1] + ' fa-' + element[2] + '\');"><i class="' + element[1] + ' fa-' + element[2] + '"></i></div>');
+                $('#webhook_icons').append('<div class="btn btn-sm btn-info w-px-40 m-2" onclick="$(\'#webhook_icon\').val(\'' + element[1] + ' fa-' + element[2] + '\');"><i class="' + element[1] + ' fa-' + element[2] + ' fs-md"></i></div>');
             });
         }
     });
@@ -202,7 +229,13 @@ function deleteEvent(id)
     jQuery(document).ready(function () {
         if (typeof events !== 'undefined' && events.length > 0) {
             events.forEach(function(element, id) {
-                $('#events .row').append('<div class="col-12 pb-2"> <div class="btn-group w-100" role="group"> <button type="button" class="btn btn-light btn-block w-100 text-left border border-info">' + element.url + '</button> <button type="button" class="btn btn-info text-right">' + element.command + '</button> <button type="button" class="btn btn-secondary text-right delete-event" data-event-id="' + id + '"><i class="fas fa-times"></i></button> </div> </div>');
+                let color = 'info';
+
+                if (element.command.includes('auto-')) {
+                    color = 'success';
+                }
+
+                $('#events .row').append('<div class="col-12 pb-2"> <div class="btn-group w-100" role="group"> <button type="button" class="btn btn-light btn-block w-75 text-left border border-' + color + ' copy-clipboard">' + element.url + '</button> <button type="button" class="btn btn-' + color + ' text-center w-25">' + element.command + '</button> <button type="button" class="btn btn-secondary text-right delete-event" data-event-id="' + id + '"><i class="fas fa-times"></i></button> </div> </div>');
             });
         } else {
             $('#events-empty').show();
@@ -222,5 +255,30 @@ function deleteEvent(id)
      */
     $(document.body).on('click', '#submit_add_event', function() {
         addEvent();
+    });
+
+    /*!
+     * Copy Mac Hash to Clipboard
+     */
+    $(document.body).on('click', '#mac_hash', function() {
+        copyToClipboard('#mac_hash');
+        $('#mac_hash_tooltip').fadeIn();
+        setTimeout(function() {
+            $('#mac_hash_tooltip').fadeOut();
+        }, 4000);
+    });
+
+    /*!
+     * Copy Button Content to Clipboard
+     */
+    $(document.body).on('click', '.copy-clipboard', function() {
+        var text = $(this).text();
+        var element = this;
+
+        copyToClipboard(element);
+        $(element).html('<i class="fas fa-check"></i> Copied to Clipboard!');
+        setTimeout(function() {
+            $(element).html(text);
+        }, 1500);
     });
 })(window);

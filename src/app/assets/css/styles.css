@@ -30,3 +30,12 @@ button:focus {
 .trigger-webhook i {
     margin-right: -10px;
 }
+
+#mac_hash_tooltip {
+    margin-top: -40px;
+    cursor: pointer;
+}
+
+#mac_hash_tooltip .arrow::before {
+    border-top-color: #6C757D;
+}

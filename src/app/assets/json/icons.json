@@ -20,11 +20,6 @@
     "times"
   ],
   [
-    "close",
-    null,
-    "times"
-  ],
-  [
     "gear",
     null,
     "cog"
@@ -65,11 +60,6 @@
     "redo"
   ],
   [
-    "rotate-right",
-    null,
-    "redo"
-  ],
-  [
     "refresh",
     null,
     "sync"
@@ -91,16 +81,6 @@
   ],
   [
     "picture-o",
-    "far",
-    "image"
-  ],
-  [
-    "photo",
-    "far",
-    "image"
-  ],
-  [
-    "image",
     "far",
     "image"
   ],
@@ -270,11 +250,6 @@
     null
   ],
   [
-    "facebook",
-    "fab",
-    "facebook-f"
-  ],
-  [
     "facebook-f",
     "fab",
     "facebook-f"
@@ -350,11 +325,6 @@
     "save"
   ],
   [
-    "navicon",
-    null,
-    "bars"
-  ],
-  [
     "reorder",
     null,
     "bars"
@@ -420,11 +390,6 @@
     "tachometer-alt"
   ],
   [
-    "dashboard",
-    null,
-    "tachometer-alt"
-  ],
-  [
     "comment-o",
     "far",
     "comment"
@@ -443,11 +408,6 @@
     "clipboard",
     "far",
     null
-  ],
-  [
-    "paste",
-    "far",
-    "clipboard"
   ],
   [
     "lightbulb-o",
@@ -570,16 +530,6 @@
     "star-half"
   ],
   [
-    "star-half-empty",
-    "far",
-    "star-half"
-  ],
-  [
-    "star-half-full",
-    "far",
-    "star-half"
-  ],
-  [
     "code-fork",
     null,
     "code-branch"
@@ -655,11 +605,6 @@
     "caret-square-down"
   ],
   [
-    "toggle-down",
-    "far",
-    "caret-square-down"
-  ],
-  [
     "caret-square-o-up",
     "far",
     "caret-square-up"
@@ -685,11 +630,6 @@
     "euro-sign"
   ],
   [
-    "euro",
-    null,
-    "euro-sign"
-  ],
-  [
     "gbp",
     null,
     "pound-sign"
@@ -700,34 +640,9 @@
     "dollar-sign"
   ],
   [
-    "dollar",
-    null,
-    "dollar-sign"
-  ],
-  [
     "inr",
     null,
     "rupee-sign"
-  ],
-  [
-    "rupee",
-    null,
-    "rupee-sign"
-  ],
-  [
-    "jpy",
-    null,
-    "yen-sign"
-  ],
-  [
-    "cny",
-    null,
-    "yen-sign"
-  ],
-  [
-    "rmb",
-    null,
-    "yen-sign"
   ],
   [
     "yen",
@@ -735,34 +650,14 @@
     "yen-sign"
   ],
   [
-    "rub",
-    null,
-    "ruble-sign"
-  ],
-  [
     "ruble",
     null,
     "ruble-sign"
   ],
   [
-    "rouble",
-    null,
-    "ruble-sign"
-  ],
-  [
-    "krw",
-    null,
-    "won-sign"
-  ],
-  [
     "won",
     null,
     "won-sign"
-  ],
-  [
-    "btc",
-    "fab",
-    null
   ],
   [
     "bitcoin",
@@ -860,11 +755,6 @@
     null
   ],
   [
-    "bitbucket-square",
-    "fab",
-    "bitbucket"
-  ],
-  [
     "tumblr",
     "fab",
     null
@@ -935,11 +825,6 @@
     null
   ],
   [
-    "gratipay",
-    "fab",
-    null
-  ],
-  [
     "gittip",
     "fab",
     "gratipay"
@@ -995,11 +880,6 @@
     "caret-square-left"
   ],
   [
-    "toggle-left",
-    "far",
-    "caret-square-left"
-  ],
-  [
     "dot-circle-o",
     "far",
     "dot-circle"
@@ -1008,11 +888,6 @@
     "vimeo-square",
     "fab",
     null
-  ],
-  [
-    "try",
-    null,
-    "lira-sign"
   ],
   [
     "turkish-lira",
@@ -1255,21 +1130,6 @@
     null
   ],
   [
-    "life-bouy",
-    "far",
-    "life-ring"
-  ],
-  [
-    "life-buoy",
-    "far",
-    "life-ring"
-  ],
-  [
-    "life-saver",
-    "far",
-    "life-ring"
-  ],
-  [
     "support",
     "far",
     "life-ring"
@@ -1278,16 +1138,6 @@
     "circle-o-notch",
     null,
     "circle-notch"
-  ],
-  [
-    "rebel",
-    "fab",
-    null
-  ],
-  [
-    "ra",
-    "fab",
-    "rebel"
   ],
   [
     "resistance",
@@ -1313,16 +1163,6 @@
     "git",
     "fab",
     null
-  ],
-  [
-    "hacker-news",
-    "fab",
-    null
-  ],
-  [
-    "y-combinator-square",
-    "fab",
-    "hacker-news"
   ],
   [
     "yc-square",
@@ -1356,11 +1196,6 @@
   ],
   [
     "paper-plane-o",
-    "far",
-    "paper-plane"
-  ],
-  [
-    "send-o",
     "far",
     "paper-plane"
   ],
@@ -1510,16 +1345,6 @@
     "closed-captioning"
   ],
   [
-    "ils",
-    null,
-    "shekel-sign"
-  ],
-  [
-    "shekel",
-    null,
-    "shekel-sign"
-  ],
-  [
     "sheqel",
     null,
     "shekel-sign"
@@ -1613,16 +1438,6 @@
     "medium",
     "fab",
     null
-  ],
-  [
-    "y-combinator",
-    "fab",
-    null
-  ],
-  [
-    "yc",
-    "fab",
-    "y-combinator"
   ],
   [
     "optin-monster",
@@ -1731,11 +1546,6 @@
   ],
   [
     "hand-paper-o",
-    "far",
-    "hand-paper"
-  ],
-  [
-    "hand-stop-o",
     "far",
     "hand-paper"
   ],
@@ -2135,11 +1945,6 @@
     "address-card"
   ],
   [
-    "address-card-o",
-    "far",
-    "address-card"
-  ],
-  [
     "vcard-o",
     "far",
     "address-card"
@@ -2166,11 +1971,6 @@
   ],
   [
     "id-card-o",
-    "far",
-    "id-card"
-  ],
-  [
-    "drivers-license-o",
     "far",
     "id-card"
   ],
@@ -2242,11 +2042,6 @@
   [
     "times-rectangle",
     null,
-    "window-close"
-  ],
-  [
-    "window-close-o",
-    "far",
     "window-close"
   ],
   [

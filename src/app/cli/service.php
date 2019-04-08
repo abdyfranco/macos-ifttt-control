@@ -1,18 +1,19 @@
 <?php
 
 // Include required files
-include 'config.php';
 include 'blacklist.php';
 
 // Define constants
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOTWEBDIR', dirname(__FILE__) . DS);
-define('APPDIR', ROOTWEBDIR . 'macOS IFTTT Control.app' . DS . 'Contents' . DS . 'Resources' . DS . 'app' . DS);
-
-// Format DropBox url
-$config['public_link'] = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config['public_link']));
+define('APPDIR', realpath(ROOTWEBDIR . '..' . DS) . DS);
 
 while (true) {
+    // Get config file
+    $config = file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'config.json');
+    $config = (object) json_decode($config);
+    $config->public_link = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config->public_link));
+
     // Get webhook events
     $webhooks = @file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'events.json');
     $webhooks = json_decode($webhooks);
@@ -22,8 +23,11 @@ while (true) {
         unset($webhooks[$key]);
     }
 
+    // Trigger automatic webhooks
+    include 'triggers.php';
+
     // Get commands history
-    $command_history = file_get_contents($config['public_link']);
+    $command_history = file_get_contents($config->public_link);
     $command_history = (array) explode("\n", trim($command_history));
 
     // Generate hashes for all the commands
@@ -56,12 +60,23 @@ while (true) {
         // Execute command
         $response = shell_exec($shell_command);
 
-        // Trigger Webhook if exists
+        // Log response
+        $log = $exec_hash . ' Response: ' . $response . "\n";
+        file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
+        echo $log;
+        
+        // Trigger Webhook event if exists
         $arguments = (array) explode(' ', $cli_command[1]);
         $action = trim($arguments[0]);
 
         if (isset($webhooks[$action]) && count($webhooks[$action]) > 0) {
             foreach ($webhooks[$action] as $webhook) {
+                // Log webhook event
+                $log = 'Webhook Event: ' . $webhook . ' - Action: ' . $action . ' - Arguments: ' . $arguments . "\n";
+                file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
+                echo $log;
+
+                // Call webhook event
                 $parameters = [
                     'value1' => $action, // Executed action
                     'value2' => implode(' ', $arguments), // Arguments

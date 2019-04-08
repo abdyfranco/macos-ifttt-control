@@ -30,6 +30,7 @@ rm -rf "$BASEDIR/app/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
 cp -r "$BASEDIR/app/macOS IFTTT Control-mas-x64/macOS IFTTT Control.app" "$BASEDIR/../build" >/dev/null 2>&1
 rm -rf "$BASEDIR/../build/macOS IFTTT Control.app/Contents/Resources/electron.icns" >/dev/null 2>&1
 cp -r "$BASEDIR/app/electron.icns" "$BASEDIR/../build/macOS IFTTT Control.app/Contents/Resources/" >/dev/null 2>&1
+mv "$BASEDIR/../build/macOS IFTTT Control.app" "$BASEDIR/../build/macOSIFTTTControl.app" >/dev/null 2>&1
 
 # Cleaning environment
 echo '=> Cleaning environment...';

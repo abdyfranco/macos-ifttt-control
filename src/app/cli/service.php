@@ -27,7 +27,7 @@ while (true) {
     include 'triggers.php';
 
     // Get commands history
-    $command_history = file_get_contents($config['public_link']);
+    $command_history = file_get_contents($config->public_link);
     $command_history = (array) explode("\n", trim($command_history));
 
     // Generate hashes for all the commands
@@ -60,6 +60,11 @@ while (true) {
         // Execute command
         $response = shell_exec($shell_command);
 
+        // Log response
+        $log = $exec_hash . ' Response: ' . $response . "\n";
+        file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
+        echo $log;
+        
         // Trigger Webhook event if exists
         $arguments = (array) explode(' ', $cli_command[1]);
         $action = trim($arguments[0]);

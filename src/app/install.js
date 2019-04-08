@@ -32,7 +32,9 @@ let hash = crypto.createHash('md5').update(Math.random() + 'dtm' + date.getTime(
 
         // Delete hash file
         var desktop_path = path.join(process.env.HOME, '/Desktop');
-        fs.unlinkSync(path.join(desktop_path, '/' + hash));
+        if (fs.existsSync(path.join(desktop_path, '/' + hash))) {
+            fs.unlinkSync(path.join(desktop_path, '/' + hash));
+        }
 
         // Save the config file
         var config_file = path.join(__dirname, './assets/json/config.json');
@@ -48,11 +50,15 @@ let hash = crypto.createHash('md5').update(Math.random() + 'dtm' + date.getTime(
         // Register the service daemon
         var daemon_file = path.join(__dirname, './cli/daemon/co.abdyfran.macosiftttcontrol.plist');
         var library_path = path.join(process.env.HOME, '/Library');
-        exec('cp ' + daemon_file + ' ' + library_path + '/LaunchAgents/co.abdyfran.macosiftttcontrol.plist', function (error, stdout, stderr) {
+        exec('cp "' + daemon_file + '" ' + library_path + '/LaunchAgents/co.abdyfran.macosiftttcontrol.plist', function (error, stdout, stderr) {
+            console.log(error);
             console.log(stdout);
+            console.log(stderr);
         });
         exec('launchctl load ' + library_path + '/LaunchAgents/co.abdyfran.macosiftttcontrol.plist', function (error, stdout, stderr) {
+            console.log(error);
             console.log(stdout);
+            console.log(stderr);
             window.location.replace('index.html');
         });
     });

@@ -10,21 +10,29 @@ if [ "$BASEDIR" == "." ]; then
    BASEDIR=$(pwd)
 fi
 
+# Get the app version
+VERSION="$($BASEDIR/package version)"
+
 # Make build dir
 echo '=> Make sure you already run the "sudo npm install electron-packager -g" command before.';
 rm -rf "$BASEDIR/../build" >/dev/null 2>&1
-mkdir -p "$BASEDIR/../build/macOSIFTTTControl" >/dev/null 2>&1
+mkdir "$BASEDIR/../build" >/dev/null 2>&1
+
+# Build CLI service
+echo "=> Building CLI service v$VERSION ...";
+(cd "$BASEDIR/app/cli" && ./install_dependencies)
 
 # Build electron app
-echo '=> Building electron app...';
-rm -rf "$BASEDIR/gui/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
-electron-packager "$BASEDIR/gui" "macOS IFTTT Control" --platform=mas --arch=x64 >/dev/null 2>&1
-cp -r "$BASEDIR/gui/macOS IFTTT Control-mas-x64/macOS IFTTT Control.app" "$BASEDIR/../build/macOSIFTTTControl" >/dev/null 2>&1
-rm -rf "$BASEDIR/gui/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
-rm -rf "$BASEDIR/../build/macOSIFTTTControl/macOS IFTTT Control.app/Contents/Resources/electron.icns" >/dev/null 2>&1
-cp -r "$BASEDIR/gui/electron.icns" "$BASEDIR/../build/macOSIFTTTControl/macOS IFTTT Control.app/Contents/Resources/" >/dev/null 2>&1
+echo "=> Building electron app v$VERSION ...";
+(cd "$BASEDIR/app" && npm install)
+rm -rf "$BASEDIR/app/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
+(cd "$BASEDIR/app" && electron-packager "$BASEDIR/app" "macOS IFTTT Control" --overwrite --platform=mas --arch=x64)
+cp -r "$BASEDIR/app/macOS IFTTT Control-mas-x64/macOS IFTTT Control.app" "$BASEDIR/../build" >/dev/null 2>&1
+rm -rf "$BASEDIR/../build/macOS IFTTT Control.app/Contents/Resources/electron.icns" >/dev/null 2>&1
+cp -r "$BASEDIR/app/electron.icns" "$BASEDIR/../build/macOS IFTTT Control.app/Contents/Resources/" >/dev/null 2>&1
 
-echo '=> Building service...';
-cp -r $BASEDIR/macOSIFTTTControl/* "$BASEDIR/../build/macOSIFTTTControl/" >/dev/null 2>&1
-$BASEDIR/../build/macOSIFTTTControl/update >/dev/null 2>&1
-rm -rf "$BASEDIR/../build/macOSIFTTTControl/update" >/dev/null 2>&1
+# Cleaning environment
+echo '=> Cleaning environment...';
+rm -rf "$BASEDIR/app/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
+rm -rf "$BASEDIR/app/node_modules" >/dev/null 2>&1
+rm -rf "$BASEDIR/app/cli/vendors" >/dev/null 2>&1

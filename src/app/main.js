@@ -9,12 +9,14 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 950,
+    height: 700,
+    minHeight: 480,
+    minWidth: 700,
     webPreferences: {
       nodeIntegration: true
     },
-    icon: path.join(__dirname, 'assets/icon.png')
+    icon: path.join(__dirname, '/assets/icon.png')
   })
 
   // and load the index.html of the app.
@@ -39,9 +41,7 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 })
 
 app.on('activate', function () {

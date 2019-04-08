@@ -21,7 +21,7 @@
 
                     <div id="webhooks-empty" class="w-100 p-2" style="display: none;">
                         <div class="bg-info text-white shadow rounded px-4 py-3">
-                            There are no Webhooks added yet. Why don't you add one right now?
+                            There are no Webhook Triggers added yet. Why don't you add one right now?
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                     <div id="events-empty" class="w-100 p-2" style="display: none;">
                         <div class="bg-info text-white shadow rounded px-4 py-3">
-                            There are no Events added yet. Why don't you add one right now?
+                            There are no Webhook Events added yet. Why don't you add one right now?
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
             <div id="options" class="pt-4">
                 <h6 class="pb-2 text-muted"><small>Options:</small></h6>
                 <div class="row">
-                    <div class="col-12 col-md-4 text-left">
+                    <div class="col-12 col-md-4 text-left pb-1">
                         <button type="button" class="btn btn-sm btn-info btn-block" data-toggle="modal" data-target="#add-webhook"><i class="fas fa-plus"></i> Add Webhook Trigger</button>
                     </div>
                     <div class="modal fade" id="add-webhook" tabindex="-1" role="dialog">
@@ -58,7 +58,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="webhook_url">Webhook URL</label>
-                                        <input type="text" class="form-control" id="webhook_url" placeholder="https://maker.ifttt.com/trigger/event/">
+                                        <input type="text" class="form-control" id="webhook_url" placeholder="Webhook URL">
                                     </div>
                                     <div class="form-group">
                                         <label for="webhook_icon">Webhook Icon</label>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="webhook_title">Webhook Title</label>
-                                        <input type="text" class="form-control" id="webhook_title" placeholder="Trigger Webhook">
+                                        <input type="text" class="form-control" id="webhook_title" placeholder="Webhook Title">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 text-center">
+                    <div class="col-12 col-md-4 text-center pb-1">
                         <button type="button" class="btn btn-sm btn-info btn-block" data-toggle="modal" data-target="#add-event"><i class="fas fa-plus"></i> Add Webhook Event</button>
                     </div>
                     <div class="modal fade" id="add-event" tabindex="-1" role="dialog">
@@ -106,11 +106,17 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="event_url">Event URL</label>
-                                        <input type="text" class="form-control" id="event_url" placeholder="https://maker.ifttt.com/trigger/event/">
+                                        <input type="text" class="form-control" id="event_url" placeholder="Event URL">
                                     </div>
                                     <div class="form-group">
-                                        <label for="event_command">Event Command</label>
+                                        <label for="event_command">Trigger</label>
                                         <select class="form-control" id="event_command">
+                                            <option disabled>Automatic Trigger</option>
+                                            <option value="auto-battery">Battery drops below 20%</option>
+                                            <option value="auto-bluetooth-off">Bluetooth is turned off</option>
+                                            <option value="auto-bluetooth-on">Bluetooth is turned on</option>
+                                            <option disabled> </option>
+                                            <option disabled>macOS IFTTT Events</option>
                                             <option value="battery">battery</option>
                                             <option value="bluetooth">bluetooth</option>
                                             <option value="dir">dir</option>
@@ -161,9 +167,22 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 text-right">
+                    <div class="col-12 col-md-4 text-right pb-1">
                         <a href="http://abdyfran.co/projects/macos-ifttt/marketplace" target="_blank" class="btn btn-sm btn-info btn-block external-link"><i class="fas fa-rocket"></i> Marketplace</a>
                     </div>
+                </div>
+            </div>
+
+            <div id="footer" class="py-4 text-muted">
+                <div id="mac_hash_tooltip" class="tooltip bs-tooltip-top" onclick="$(this).fadeOut();" role="tooltip" style="opacity: 1; display: none;">
+                    <div class="arrow ml-2"></div>
+                    <div class="tooltip-inner bg-secondary shadow fs-sm">
+                        <i class="fas fa-check"></i> Copied to Clipboard!
+                    </div>
+                </div>
+                <small>Mac Hash: <i id="mac_hash"></i></small>
+                <div class="float-right">
+                    <a href="https://github.com/abdyfranco/macos-ifttt-control/wiki" target="_blank" class="text-muted fs-sm external-link"><i class="fas fa-book mr-1"></i> Documentation</a>
                 </div>
             </div>
 
@@ -184,11 +203,9 @@
         </div>
 
         <script>
-            // You can also require other files to run in this process
-            require('./renderer.js')
-            require('./webhooks.js')
-
             // Redirect to the installer if the service isn't configured
+            var config_file = './assets/json/config.json';
+
             const fs = require('fs');
             const path = require('path');
             const service = path.join(__dirname, config_file);
@@ -200,6 +217,10 @@
             } catch(err) {
                 console.error(err);
             }
+
+            // You can also require other files to run in this process
+            require('./renderer.js')
+            require('./index.js')
         </script>
         <script src="./assets/js/app.js"></script>
     </body>

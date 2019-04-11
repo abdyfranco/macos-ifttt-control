@@ -23,7 +23,7 @@ foreach ($webhooks as $key => $value) {
 }
 
 // Get package json
-$package = file_get_contents(APPDIR . 'package.json');
+$package = file_get_contents(APPDIR . 'package-lock.json');
 $package = (object) json_decode($package);
 
 // Get remote package json
@@ -62,12 +62,8 @@ if (version_compare($remote_package->version, $package->version, '>')) {
     }
 
     // Update package-lock.json version
-    $package_lock = file_get_contents(APPDIR . 'package-lock.json');
-    $package_lock = (object) json_decode($package_lock);
-
-    $package_lock->version = $remote_package->version;
-    $package_lock = json_encode($package_lock);
-
+    $package->version = $remote_package->version;
+    $package_lock = json_encode($package);
     file_put_contents(APPDIR . 'package-lock.json', $package_lock);
 } else {
     echo 'No updates available.' . "\n";

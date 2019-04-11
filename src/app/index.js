@@ -192,7 +192,7 @@ function deleteEvent(id)
     jQuery(document).ready(function () {
         if (typeof triggers !== 'undefined' && triggers.length > 0) {
             triggers.forEach(function(element, id) {
-                $('#webhooks .row').append('<div class="col-3 col-md-2 col-lg-1"><div class="btn btn-sm btn-secondary delete-webhook" data-webhook-id="' + id + '"><i class="fas fa-times"></i></div> <div class="btn btn-block btn-sm btn-' + element.color + ' trigger-webhook" data-webhook="' + element.url + '"><i class="' + element.icon + ' fs-lg my-2"></i><br/> ' + element.title + '</div></div>');
+                $('#webhooks .row').append('<div class="col-3 col-md-2 col-lg-1 pb-4"><div class="btn btn-sm btn-secondary delete-webhook" data-webhook-id="' + id + '"><i class="fas fa-times"></i></div> <div class="btn btn-block btn-sm btn-' + element.color + ' trigger-webhook" data-webhook="' + element.url + '"><i class="' + element.icon + ' fs-lg my-2"></i><br/> ' + element.title + '</div></div>');
             });
         } else {
             $('#webhooks-empty').show();

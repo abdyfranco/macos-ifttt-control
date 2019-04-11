@@ -1,19 +1,13 @@
 {  
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/install.js":"install.js",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/main.js":"main.js",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/renderer.js":"renderer.js",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/index.js":"index.js",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/update.js":"update.js",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/package.json":"package.json",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/index.js":"index.js",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/index.html":"index.html",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/install.html":"install.html",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/update.html":"update.html",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/install_dependencies":"cli\/install_dependencies",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/enable_user":"cli\/enable_user",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/service.php":"cli\/service.php",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/triggers.php":"cli\/triggers.php",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/download":"cli\/plugins\/download",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/assets\/json\/icons.json":"app\/assets\/json\/icons.json",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/automator":"cli\/plugins\/automator",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/ifttt":"cli\/plugins\/ifttt",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/macrodroid":"cli\/plugins\/macrodroid",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/notificationcenter":"cli\/plugins\/notificationcenter",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/open":"cli\/plugins\/open",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/say":"cli\/plugins\/say"
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/say":"cli\/plugins\/say",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/webhook":"cli\/plugins\/webhook"
 }

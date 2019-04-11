@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+help(){
+    cat<<__EOF__
+    usage:  m ifttt [ help ]
+
+    Examples:
+      m ifttt "event_name" "webhook_key"             # triggers a webhook-based IFTTT applet
+      m ifttt "event_name" "webhook_key" "param1"    # triggers a webhook-based IFTTT applet with parameters
+__EOF__
+}
+
+ifttt(){
+  echo "Triggering Applet..."
+  curl -i "https://maker.ifttt.com/trigger/${1}/with/key/${2}?value1=${3}&value2=${4}&value3=${5}"
+}
+
+case $1 in
+    help)
+        help
+        ;;
+    *)
+        ifttt "$@" "$@" "$@" "$@" "$@"
+        ;;
+esac
+
+# vim: ts=4 sw=4 softtabstop=4 expandtab

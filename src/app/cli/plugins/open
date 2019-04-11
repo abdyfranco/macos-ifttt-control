@@ -2,7 +2,7 @@
 
 help(){
     cat<<__EOF__
-    usage:  m open [ file | application | url ]
+    usage:  m open
 
     Examples:
       m open "http://google.com"                   # opens a website
@@ -16,7 +16,7 @@ case $1 in
         help
         ;;
     *)
-        open $@
+        open "$@"
         ;;
 esac
 

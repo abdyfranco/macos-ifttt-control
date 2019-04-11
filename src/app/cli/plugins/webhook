@@ -2,11 +2,16 @@
 
 help(){
     cat<<__EOF__
-    usage:  m say
+    usage:  m webhook [ help ]
 
     Examples:
-      m say "hello"    # says hello
+      m webhook "http://google.com"    # triggers a webhook
 __EOF__
+}
+
+webhook(){
+  echo "Triggering Webhook..."
+  curl -i "${1}"
 }
 
 case $1 in
@@ -14,7 +19,7 @@ case $1 in
         help
         ;;
     *)
-        say "$@"
+        webhook "$@"
         ;;
 esac
 

@@ -2,10 +2,10 @@
 
 help(){
     cat<<__EOF__
-    usage:  m notificationcenter [ title | message ]
+    usage:  m notificationcenter [ help ]
 
     Examples:
-      m notificationcenter "hello" "world"       # shows a notification on the notification center
+      m notificationcenter "title" "message"       # shows a notification on the notification center
 __EOF__
 }
 

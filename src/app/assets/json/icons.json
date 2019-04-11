@@ -1535,11 +1535,6 @@
     "hourglass-end"
   ],
   [
-    "hand-rock-o",
-    "far",
-    "hand-rock"
-  ],
-  [
     "hand-grab-o",
     "far",
     "hand-rock"
@@ -1835,11 +1830,6 @@
     "deaf"
   ],
   [
-    "hard-of-hearing",
-    null,
-    "deaf"
-  ],
-  [
     "glide",
     "fab",
     null
@@ -1905,19 +1895,9 @@
     "google-plus"
   ],
   [
-    "google-plus-circle",
-    "fab",
-    "google-plus"
-  ],
-  [
     "font-awesome",
     "fab",
     null
-  ],
-  [
-    "fa",
-    "fab",
-    "font-awesome"
   ],
   [
     "handshake-o",
@@ -1988,11 +1968,6 @@
     "telegram",
     "fab",
     null
-  ],
-  [
-    "thermometer-4",
-    null,
-    "thermometer-full"
   ],
   [
     "thermometer",

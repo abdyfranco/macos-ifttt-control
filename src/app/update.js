@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
+const remote = require('electron').remote;
 
 /**
  * Frontend script.
@@ -25,6 +26,27 @@ const exec = require('child_process').exec;
         exec('php ' + update_script, function (error, stdout, stderr) {
             console.log(stdout);
             window.location.replace('index.html');
+        });
+    });
+
+    /*!
+     * Get application version
+     */
+    jQuery(document).ready(function () {
+        // Get current version
+        var version = remote.app.getVersion();
+        $('#current_version').text(version);
+        
+        // Get remote version
+        var package_url = 'https://raw.githubusercontent.com/abdyfranco/macos-ifttt-control/master/src/app/package.json';
+
+        request({
+            url: package_url,
+            json: true
+        }, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                $('#new_version').text(body.version);
+            }
         });
     });
 })(window);

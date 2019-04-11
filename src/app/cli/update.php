@@ -59,8 +59,16 @@ if (version_compare($remote_package->version, $package->version, '>')) {
             echo 'Update failed at: ' . $local_file . "\n";
             exit;
         }
-
     }
+
+    // Update package-lock.json version
+    $package_lock = file_get_contents(APPDIR . 'package-lock.json');
+    $package_lock = (object) json_decode($package_lock);
+
+    $package_lock->version = $remote_package->version;
+    $package_lock = json_encode($package_lock);
+
+    file_put_contents(APPDIR . 'package-lock.json', $package_lock);
 } else {
     echo 'No updates available.' . "\n";
 }

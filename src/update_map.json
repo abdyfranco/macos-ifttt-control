@@ -9,5 +9,6 @@
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/notificationcenter":"cli\/plugins\/notificationcenter",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/open":"cli\/plugins\/open",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/say":"cli\/plugins\/say",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/webhook":"cli\/plugins\/webhook"
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/webhook":"cli\/plugins\/webhook",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/update.php":"cli\/update.php"
 }

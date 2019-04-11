@@ -76,5 +76,4 @@ let hash = crypto.createHash('md5').update(Math.random() + 'dtm' + date.getTime(
             // Nothing to do
         });
     });
-
 })(window);

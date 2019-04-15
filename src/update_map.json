@@ -1,6 +1,7 @@
 {  
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/package.json":"package.json",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/index.js":"index.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/update.js":"update.js",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/index.html":"index.html",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/assets\/json\/icons.json":"assets\/json\/icons.json",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/automator":"cli\/plugins\/automator",

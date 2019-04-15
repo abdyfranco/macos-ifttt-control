@@ -51,6 +51,15 @@ if (version_compare($remote_package->version, $package->version, '>')) {
                 unlink($local_file);
             }
 
+            // Check if directory exists
+            $local_directory = explode('/', $local_file);
+            array_pop($local_directory);
+            $local_directory = '/' . trim(implode('/', $local_directory), '/');
+
+            if (!is_dir($local_directory)) {
+                mkdir($local_directory, 0777, true);
+            }
+
             // Save new file
             file_put_contents($local_file, $remote_content);
 

@@ -16,6 +16,6 @@
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/blueutil":"cli\/plugins\/blueutil",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/update.php":"cli\/update.php",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/install_dependencies":"cli\/install_dependencies",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/bluetooth":"cli\/vendors\/m-cli-master\/plugins\/bluetooth",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/blueutil":"cli\/vendors\/m-cli-master\/plugins\/blueutil"
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/core\/bluetooth":"cli\/vendors\/m-cli-master\/plugins\/bluetooth",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/core\/blueutil":"cli\/vendors\/m-cli-master\/plugins\/blueutil"
 }

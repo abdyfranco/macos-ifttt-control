@@ -71,10 +71,8 @@ if (version_compare($remote_package->version, $package->version, '>')) {
         }
     }
 
-    // Update package-lock.json version
+    // Update version
     $package->version = $remote_package->version;
-    $package_lock = json_encode($package);
-    file_put_contents(APPDIR . 'package-lock.json', $package_lock);
 } else {
     echo 'No updates available.' . "\n";
 }

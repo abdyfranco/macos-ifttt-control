@@ -25,7 +25,6 @@ const remote = require('electron').remote;
         var update_script = path.join(__dirname, './cli/update.php');
         exec('php ' + update_script, function (error, stdout, stderr) {
             console.log(stdout);
-            exec(process.execPath);
             remote.app.quit();
         });
     });

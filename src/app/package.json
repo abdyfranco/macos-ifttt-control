@@ -1,6 +1,6 @@
 {
     "name": "co.abdyfran.macosiftttcontrol",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Cloud-Based IFTTT Task Automation Service for macOS.",
     "main": "main.js",
     "scripts": {

@@ -62,6 +62,7 @@ if (version_compare($remote_package->version, $package->version, '>')) {
 
             // Save new file
             file_put_contents($local_file, $remote_content);
+            chmod($local_file, 0755);
 
             echo 'Updated: ' . $remote_file . ' => ' . $local_file . "\n";
         } else {

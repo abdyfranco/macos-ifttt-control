@@ -35,5 +35,4 @@ mv "$BASEDIR/../build/macOS IFTTT Control.app" "$BASEDIR/../build/macOSIFTTTCont
 # Cleaning environment
 echo '=> Cleaning environment...';
 rm -rf "$BASEDIR/app/macOS IFTTT Control-mas-x64" >/dev/null 2>&1
-rm -rf "$BASEDIR/app/node_modules" >/dev/null 2>&1
 rm -rf "$BASEDIR/app/cli/vendors" >/dev/null 2>&1

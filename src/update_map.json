@@ -17,5 +17,12 @@
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/update.php":"cli\/update.php",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/install_dependencies":"cli\/install_dependencies",
     "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/core\/bluetooth":"cli\/vendors\/m-cli-master\/plugins\/bluetooth",
-    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/core\/blueutil":"cli\/vendors\/m-cli-master\/plugins\/blueutil"
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/cli\/plugins\/core\/blueutil":"cli\/vendors\/m-cli-master\/plugins\/blueutil",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.js":"node_modules\/jquery\/dist\/jquery.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/core.js":"node_modules\/jquery\/dist\/core.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.min.js":"node_modules\/jquery\/dist\/jquery.min.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.min.map":"node_modules\/jquery\/dist\/jquery.min.map",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.slim.js":"node_modules\/jquery\/dist\/jquery.slim.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.slim.min.js":"node_modules\/jquery\/dist\/jquery.slim.min.js",
+    "https:\/\/raw.githubusercontent.com\/abdyfranco\/macos-ifttt-control\/master\/src\/app\/node_modules\/jquery\/dist\/jquery.slim.min.map":"node_modules\/jquery\/dist\/jquery.slim.min.map"
 }

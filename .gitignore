@@ -1,4 +1,5 @@
 # .gitignore
-src/app/node_modules/
+src/app/node_modules/*
+!src/app/node_modules/jquery/
 src/app/cli/vendors/
 build/

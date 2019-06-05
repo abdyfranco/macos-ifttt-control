@@ -3,11 +3,6 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const Menu = require('electron').Menu
 
-// Reload the application if the source code it's changed
-require('electron-reload')(__dirname, {
-    electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
-});
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow

@@ -26,10 +26,15 @@ const remote = require('electron').remote;
         exec('php ' + update_script, function (error, stdout, stderr) {
             console.log(stdout);
 
+            // Reload the application if the source code it's changed
+            require('electron-reload')(__dirname, {
+                electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+            });
+
             setTimeout(function() {
                 // Close the application if electron-reload doesn't detect a source change
                 remote.app.quit();
-            }, 5000);
+            }, 2000);
         });
     });
 

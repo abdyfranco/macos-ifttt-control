@@ -6,11 +6,11 @@ $package_json = @file_get_contents(dirname(__FILE__) . '/app/package.json');
 $properties = (array) json_decode($package_json);
 
 if (isset($argv[1])) {
-	echo isset($properties[$argv[1]]) ? $properties[$argv[1]] : null;
+    echo isset($properties[$argv[1]]) ? $properties[$argv[1]] : null;
 } else {
-	foreach ($properties as $key => $value) {
-		if (is_string($value)) {
-			echo $key . ': ' . $value . "\n";
-		}
-	}
+    foreach ($properties as $key => $value) {
+        if (is_string($value)) {
+            echo $key . ': ' . $value . "\n";
+        }
+    }
 }

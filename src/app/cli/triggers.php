@@ -40,7 +40,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
                     // Trigger all the webhooks
                     foreach ($webhooks_url as $trigger) {
                         // Log webhook trigger
-                        $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $battery_percentage .  "\n";
+                        $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $battery_percentage . "\n";
                         file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
                         echo $log;
 
@@ -55,7 +55,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
                     }
                 } else if ($battery_percentage >= $battery_threshold && $control->{'auto-battery'} < $battery_threshold) {
                     // The battery is not more under the threshold
-                    $control->{'auto-battery'} = $battery_percentage + 1;   
+                    $control->{'auto-battery'} = $battery_percentage + 1;
                 }
             }
 
@@ -83,7 +83,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
                 // Trigger all the webhooks
                 foreach ($webhooks_url as $trigger) {
                     // Log webhook trigger
-                    $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $bluetooth_status .  "\n";
+                    $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $bluetooth_status . "\n";
                     file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
                     echo $log;
 
@@ -117,7 +117,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
             // Get bluetooth status
             $bluetooth_status = trim(str_replace('Bluetooth:', '', $status_response));
             $bluetooth_status = ($bluetooth_status == 'ON' || $bluetooth_status == 'OFF') ? $bluetooth_status : 'OFF';
-            
+
             // Check if the event can be triggered
             if ($bluetooth_status == 'ON' && $control->{'auto-bluetooth-on'} == false) {
                 $control->{'auto-bluetooth-on'} = true;
@@ -125,7 +125,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
                 // Trigger all the webhooks
                 foreach ($webhooks_url as $trigger) {
                     // Log webhook trigger
-                    $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $bluetooth_status .  "\n";
+                    $log = 'Automatic Webhook Trigger: ' . $trigger->url . ' - Action: ' . $trigger->command . ' - Status: ' . $bluetooth_status . "\n";
                     file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
                     echo $log;
 

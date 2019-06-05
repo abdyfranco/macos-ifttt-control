@@ -64,7 +64,7 @@ while (true) {
         $log = $exec_hash . ' Response: ' . $response . "\n";
         file_put_contents(ROOTWEBDIR . 'commands.log', $log, FILE_APPEND);
         echo $log;
-        
+
         // Trigger Webhook event if exists
         $arguments = (array) explode(' ', $cli_command[1]);
         $action = trim($arguments[0]);

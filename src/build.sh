@@ -6,7 +6,7 @@ printf "\033[1;36;48m" ; clear
 # Get current working directory
 BASEDIR=$(dirname "$0")
 
-if [ "$BASEDIR" == "." ]; then
+if [[ "$BASEDIR" == "." ]]; then
    BASEDIR=$(pwd)
 fi
 

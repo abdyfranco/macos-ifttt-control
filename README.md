@@ -37,5 +37,4 @@ create your own applets by checking our documentation [here](https://github.com/
  - [Bitcoin](https://www.blockchain.com/btc/payment_request?address=1LMLf1JDouaeEwpUxsH6PpFptYM4LB7b9B) 
 
 ## Copyright
-- Copyright (c) 2017-2018 [Abdy Franco](http://abdyfran.co/)
-- Copyright (c) 2016-2018 [Rogelio Cedillo](https://github.com/rgcr)
+- Copyright (c) 2017-2019 [Abdy Franco](http://abdyfran.co/)

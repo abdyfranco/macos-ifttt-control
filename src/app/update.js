@@ -12,20 +12,24 @@ const remote = require('electron').remote;
 /**
  * Frontend script.
  */
-(function (){
+(function () {
     /*!
      * Update application
      */
-    $(document.body).on('click', '.btn.update', function() {
+    $(document.body).on('click', '.btn.update', function () {
         // Show loading spinner
         $('#loading_spinner').fadeIn();
         $('.btn.update').removeClass('update').addClass('disabled');
 
         // Execute update script
-        var update_script = path.join(__dirname, './cli/update.php');
+        let update_script = path.join(__dirname, './cli/update.php');
         exec('php ' + update_script, function (error, stdout, stderr) {
             console.log(stdout);
-            remote.app.quit();
+
+            setTimeout(function() {
+                // Close the application if electron-reload doesn't detect a source change
+                remote.app.quit();
+            }, 5000);
         });
     });
 
@@ -34,19 +38,20 @@ const remote = require('electron').remote;
      */
     jQuery(document).ready(function () {
         // Get current version
-        var version = remote.app.getVersion();
+        let version = remote.app.getVersion();
         $('#current_version').text(version);
-        
+
         // Get remote version
-        var package_url = 'https://raw.githubusercontent.com/abdyfranco/macos-ifttt-control/master/src/app/package.json';
+        let package_url = 'https://raw.githubusercontent.com/abdyfranco/macos-ifttt-control/master/src/app/package.json';
 
         request({
             url: package_url,
             json: true
-        }, function (error, response, body) {
+        }, (error, response, body) => {
             if (!error && response.statusCode === 200) {
                 $('#new_version').text(body.version);
             }
         });
     });
+
 })(window);

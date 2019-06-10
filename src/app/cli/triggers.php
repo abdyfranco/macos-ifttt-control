@@ -1,6 +1,6 @@
 <?php
 // Get triggers control
-$control = file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'triggers_control.json');
+$control = file_get_contents($_SERVER['HOME'] . DS . '.mic_triggers_control.json');
 $control = json_decode($control);
 
 foreach ($webhooks as $webhook_command => $webhooks_url) {
@@ -155,7 +155,7 @@ foreach ($webhooks as $webhook_command => $webhooks_url) {
 
 // Update control file
 $control = json_encode($control);
-file_put_contents(APPDIR . 'assets' . DS . 'json' . DS . 'triggers_control.json', $control);
+file_put_contents($_SERVER['HOME'] . DS . '.mic_triggers_control.json', $control);
 
 unset($control);
 unset($webhook_command);

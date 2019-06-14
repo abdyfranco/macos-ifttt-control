@@ -10,12 +10,12 @@ define('APPDIR', realpath(ROOTWEBDIR . '..' . DS) . DS);
 
 while (true) {
     // Get config file
-    $config = file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'config.json');
+    $config = file_get_contents($_SERVER['HOME'] . DS . '.mic_config.json');
     $config = (object) json_decode($config);
     $config->public_link = str_replace('https://www.dropbox.com/', 'https://dl.dropboxusercontent.com/', str_replace('?dl=0', '', $config->public_link));
 
     // Get webhook events
-    $webhooks = @file_get_contents(APPDIR . 'assets' . DS . 'json' . DS . 'events.json');
+    $webhooks = @file_get_contents($_SERVER['HOME'] . DS . '.mic_events.json');
     $webhooks = json_decode($webhooks);
 
     foreach ($webhooks as $key => $value) {

@@ -12,7 +12,7 @@
         "electron-debug": "^2.1.0",
         "electron-packager": "^13.1.1",
         "electron-reload": "^1.4.0",
-        "jquery": "^3.4.0",
+        "jquery": "^3.5.0",
         "popper.js": "^1.14.3"
     },
     "repository": "https://github.com/abdyfranco/macos-ifttt-control",

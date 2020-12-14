@@ -2,6 +2,8 @@
 
 #  macOS IFTTT Control
 
+> This project has been abandoned. An appropriate replacement will be announced in the future.
+
 **macOS IFTTT Control** – macOS IFTTT Control is a free, open source service for
 macOS that allows users to perform tasks and automate processes on their Macs
 in conjunction with different services using IFTTT.
